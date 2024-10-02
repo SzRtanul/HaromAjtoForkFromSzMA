@@ -26,21 +26,166 @@ public class HaromAjto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlJatek = new javax.swing.JPanel();
+        lblCim = new javax.swing.JLabel();
+        lblAjto1 = new javax.swing.JLabel();
+        lblAjto2 = new javax.swing.JLabel();
+        lblAjto3 = new javax.swing.JLabel();
+        txfCsere = new javax.swing.JTextField();
+        txfNemCsere = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaLeiras = new javax.swing.JTextArea();
+        btnAjto1 = new javax.swing.JButton();
+        btnAjto2 = new javax.swing.JButton();
+        btnAjto3 = new javax.swing.JButton();
+        btnUjJatek = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Három ajtós játék");
+        setResizable(false);
+
+        lblCim.setFont(new java.awt.Font("Sitka Heading", 1, 36)); // NOI18N
+        lblCim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCim.setText("Három Ajtó");
+        lblCim.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        lblCim.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lblAjto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/faajto.png"))); // NOI18N
+
+        lblAjto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/faajto.png"))); // NOI18N
+
+        lblAjto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/faajto.png"))); // NOI18N
+
+        txfCsere.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        txfCsere.setText("Nyert cserés játékok: ");
+        txfCsere.setEnabled(false);
+
+        txfNemCsere.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        txfNemCsere.setText("Nyert NEM cserés játékok: ");
+        txfNemCsere.setEnabled(false);
+        txfNemCsere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfNemCsereActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setEnabled(false);
+
+        txaLeiras.setEditable(false);
+        txaLeiras.setColumns(20);
+        txaLeiras.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
+        txaLeiras.setLineWrap(true);
+        txaLeiras.setRows(4);
+        txaLeiras.setText("A játék lényege, hogy itt 3 ajtót látsz. Az egyik ajtó egy autót rejt, a másik kettőben pedig egy kecske. Dönts arról, hogy a három ajtó közül, melyik rejtheti a kincset. Miután megjelölted, a gép javasol egy ajtót, amibe a kincs van, vagy sem. Döntsd el azt, hogy elfogadod a cserét, vagy hagyatkozol az eredeti elképzeléseden.");
+        txaLeiras.setWrapStyleWord(true);
+        txaLeiras.setEnabled(false);
+        jScrollPane1.setViewportView(txaLeiras);
+
+        btnAjto1.setText("Választ");
+
+        btnAjto2.setText("Választ");
+        btnAjto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjto2ActionPerformed(evt);
+            }
+        });
+
+        btnAjto3.setText("Választ");
+
+        btnUjJatek.setText("Új játék");
+
+        javax.swing.GroupLayout pnlJatekLayout = new javax.swing.GroupLayout(pnlJatek);
+        pnlJatek.setLayout(pnlJatekLayout);
+        pnlJatekLayout.setHorizontalGroup(
+            pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlJatekLayout.createSequentialGroup()
+                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlJatekLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(pnlJatekLayout.createSequentialGroup()
+                                .addComponent(lblCim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txfCsere, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txfNemCsere, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(pnlJatekLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(btnAjto1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAjto2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnAjto3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(pnlJatekLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lblAjto2)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAjto3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAjto1)
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addComponent(btnUjJatek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlJatekLayout.setVerticalGroup(
+            pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlJatekLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCim, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlJatekLayout.createSequentialGroup()
+                        .addComponent(txfCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAjto1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAjto3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAjto2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAjto1)
+                    .addComponent(btnAjto2)
+                    .addComponent(btnAjto3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUjJatek)
+                .addGap(31, 31, 31))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlJatek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlJatek, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txfNemCsereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNemCsereActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNemCsereActionPerformed
+
+    private void btnAjto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAjto2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +223,18 @@ public class HaromAjto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAjto1;
+    private javax.swing.JButton btnAjto2;
+    private javax.swing.JButton btnAjto3;
+    private javax.swing.JButton btnUjJatek;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAjto1;
+    private javax.swing.JLabel lblAjto2;
+    private javax.swing.JLabel lblAjto3;
+    private javax.swing.JLabel lblCim;
+    private javax.swing.JPanel pnlJatek;
+    private javax.swing.JTextArea txaLeiras;
+    private javax.swing.JTextField txfCsere;
+    private javax.swing.JTextField txfNemCsere;
     // End of variables declaration//GEN-END:variables
 }
