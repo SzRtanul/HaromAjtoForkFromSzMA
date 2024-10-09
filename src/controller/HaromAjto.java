@@ -9,7 +9,7 @@ package controller;
  * @author Szabó-MesterAlex(SZF
  */
 public class HaromAjto extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form HaromAjto
      */
