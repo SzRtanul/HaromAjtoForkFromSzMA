@@ -24,7 +24,7 @@ public class Jatek {
     private byte getSzabad(){
         boolean both = false;
         byte i;
-        for (i=0;i < ajtok && !both; i++) {
+        for (i = 0; i < ajtok && !both; i++) {
             both = i!= autohelye && i!= valasztott;
         }
         return i;
