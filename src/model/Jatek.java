@@ -4,15 +4,36 @@
  */
 package model;
 
+import eventinterfaces.EIs;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author SzabóRoland(SZF_2023
  */
-public class Jatek {
-    byte ajtok;
-    byte autohelye;
-    byte valasztott;
-    byte muveletsorrend;
+public class Jatek extends GainsToFile{
+    private static final Set<EIs.JatekItfc> listeners = new HashSet<>();
+    
+    public static void addEventListener(EIs.JatekItfc listener){
+        listeners.add(listener);
+    }
+    
+    public static void removeEventListener(EIs.JatekItfc listener){
+        listeners.remove(listener);
+    }
+    
+    private static void broadcast(){
+        for (EIs.JatekItfc item : listeners) {
+            item.actionValueChanged();
+        }
+    }
+    
+    
+    private byte ajtok;
+    private byte autohelye;
+    private byte valasztott;
+    private byte muveletsorrend;
     
     public Jatek(){
         this.ajtok=3;
@@ -32,7 +53,16 @@ public class Jatek {
     
     public boolean valaszt(byte melyik){
         muveletsorrend++;
+        if(muveletsorrend == 2) GainsToFile.novel(
+                this.valasztott == melyik ? (byte)1 : (byte)0,
+                melyik == this.autohelye ? (byte)1 : (byte)0);
+        this.valasztott = melyik;
+        Jatek.broadcast();
         return muveletsorrend < 2;
+    }
+    
+    public byte getAjtok(){
+        return ajtok;
     }
     
     public byte getFelkinal(){

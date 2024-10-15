@@ -4,17 +4,39 @@
  */
 package controller;
 
+import eventinterfaces.EIs;
+import model.GainsToFile;
+import model.Jatek;
+
 /**
  *
  * @author Szabó-MesterAlex(SZF
  */
-public class HaromAjto extends javax.swing.JFrame {
-    
+public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
+    Jatek jatek;
     /**
      * Creates new form HaromAjto
      */
     public HaromAjto() {
         initComponents();
+        initAll();
+        restart();
+    }
+    
+    public void initAll(){
+        update();
+        Jatek.addEventListener(this);
+    }
+    
+    public void restart(){
+        jatek = new Jatek();
+    }
+    
+    public void update(){
+        La_csereOsszes.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszescsere)+"");
+        La_csereKincs.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszescserekincs)+"");
+        La_nemCsereOsszes.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszesnemcsere)+"");
+        La_nemcsereKincs.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszesnemcserekincs)+"");
     }
 
     /**
@@ -41,10 +63,10 @@ public class HaromAjto extends javax.swing.JFrame {
         btnUjJatek = new javax.swing.JButton();
         txfCsereSzoveg1 = new javax.swing.JTextField();
         txfNemCsere1 = new javax.swing.JTextField();
-        nemCsereOsszes = new javax.swing.JTextField();
-        csereOsszes = new javax.swing.JTextField();
-        csereKincs = new javax.swing.JTextField();
-        nemcsereKincs = new javax.swing.JTextField();
+        La_nemCsereOsszes = new javax.swing.JTextField();
+        La_csereOsszes = new javax.swing.JTextField();
+        La_csereKincs = new javax.swing.JTextField();
+        La_nemcsereKincs = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Három ajtós játék");
@@ -69,11 +91,6 @@ public class HaromAjto extends javax.swing.JFrame {
         txfNemCsere.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfNemCsere.setText("Ebből kincs:");
         txfNemCsere.setEnabled(false);
-        txfNemCsere.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfNemCsereActionPerformed(evt);
-            }
-        });
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setToolTipText("");
@@ -91,6 +108,11 @@ public class HaromAjto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaLeiras);
 
         btnAjto1.setText("Választ");
+        btnAjto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjto1ActionPerformed(evt);
+            }
+        });
 
         btnAjto2.setText("Választ");
         btnAjto2.addActionListener(new java.awt.event.ActionListener() {
@@ -100,58 +122,38 @@ public class HaromAjto extends javax.swing.JFrame {
         });
 
         btnAjto3.setText("Választ");
+        btnAjto3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjto3ActionPerformed(evt);
+            }
+        });
 
         btnUjJatek.setText("Új játék");
+        btnUjJatek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjJatekActionPerformed(evt);
+            }
+        });
 
         txfCsereSzoveg1.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfCsereSzoveg1.setText("Ebből kincs:");
         txfCsereSzoveg1.setEnabled(false);
-        txfCsereSzoveg1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfCsereSzoveg1ActionPerformed(evt);
-            }
-        });
 
         txfNemCsere1.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfNemCsere1.setText("Összes nem csere:");
         txfNemCsere1.setEnabled(false);
-        txfNemCsere1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfNemCsere1ActionPerformed(evt);
-            }
-        });
 
-        nemCsereOsszes.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
-        nemCsereOsszes.setEnabled(false);
-        nemCsereOsszes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nemCsereOsszesActionPerformed(evt);
-            }
-        });
+        La_nemCsereOsszes.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        La_nemCsereOsszes.setEnabled(false);
 
-        csereOsszes.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
-        csereOsszes.setEnabled(false);
-        csereOsszes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                csereOsszesActionPerformed(evt);
-            }
-        });
+        La_csereOsszes.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        La_csereOsszes.setEnabled(false);
 
-        csereKincs.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
-        csereKincs.setEnabled(false);
-        csereKincs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                csereKincsActionPerformed(evt);
-            }
-        });
+        La_csereKincs.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        La_csereKincs.setEnabled(false);
 
-        nemcsereKincs.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
-        nemcsereKincs.setEnabled(false);
-        nemcsereKincs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nemcsereKincsActionPerformed(evt);
-            }
-        });
+        La_nemcsereKincs.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
+        La_nemcsereKincs.setEnabled(false);
 
         javax.swing.GroupLayout pnlJatekLayout = new javax.swing.GroupLayout(pnlJatek);
         pnlJatek.setLayout(pnlJatekLayout);
@@ -171,18 +173,18 @@ public class HaromAjto extends javax.swing.JFrame {
                                     .addComponent(txfCsereOsszes2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                    .addComponent(La_csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(La_nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlJatekLayout.createSequentialGroup()
                                         .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nemcsereKincs, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                                        .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                                     .addGroup(pnlJatekLayout.createSequentialGroup()
                                         .addComponent(txfCsereSzoveg1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(csereKincs))))))
+                                        .addComponent(La_csereKincs))))))
                     .addGroup(pnlJatekLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(btnAjto1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,19 +213,19 @@ public class HaromAjto extends javax.swing.JFrame {
                     .addGroup(pnlJatekLayout.createSequentialGroup()
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfCsereOsszes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(La_csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfNemCsere1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(La_nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlJatekLayout.createSequentialGroup()
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfCsereSzoveg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(La_csereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nemcsereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -261,37 +263,24 @@ public class HaromAjto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfNemCsereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNemCsereActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfNemCsereActionPerformed
+    private void btnUjJatekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjJatekActionPerformed
+        restart();
+    }//GEN-LAST:event_btnUjJatekActionPerformed
+
+    private void btnAjto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto1ActionPerformed
+        jatek.valaszt((byte)0);
+       // update();
+    }//GEN-LAST:event_btnAjto1ActionPerformed
 
     private void btnAjto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto2ActionPerformed
-        // TODO add your handling code here:
+        jatek.valaszt((byte)1);
+       // update();
     }//GEN-LAST:event_btnAjto2ActionPerformed
 
-    private void txfCsereSzoveg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCsereSzoveg1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfCsereSzoveg1ActionPerformed
-
-    private void txfNemCsere1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNemCsere1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfNemCsere1ActionPerformed
-
-    private void nemCsereOsszesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemCsereOsszesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nemCsereOsszesActionPerformed
-
-    private void csereOsszesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csereOsszesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_csereOsszesActionPerformed
-
-    private void csereKincsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csereKincsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_csereKincsActionPerformed
-
-    private void nemcsereKincsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemcsereKincsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nemcsereKincsActionPerformed
+    private void btnAjto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto3ActionPerformed
+        jatek.valaszt((byte)2);
+       // update();
+    }//GEN-LAST:event_btnAjto3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,19 +318,19 @@ public class HaromAjto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField La_csereKincs;
+    private javax.swing.JTextField La_csereOsszes;
+    private javax.swing.JTextField La_nemCsereOsszes;
+    private javax.swing.JTextField La_nemcsereKincs;
     private javax.swing.JButton btnAjto1;
     private javax.swing.JButton btnAjto2;
     private javax.swing.JButton btnAjto3;
     private javax.swing.JButton btnUjJatek;
-    private javax.swing.JTextField csereKincs;
-    private javax.swing.JTextField csereOsszes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAjto1;
     private javax.swing.JLabel lblAjto2;
     private javax.swing.JLabel lblAjto3;
     private javax.swing.JLabel lblCim;
-    private javax.swing.JTextField nemCsereOsszes;
-    private javax.swing.JTextField nemcsereKincs;
     private javax.swing.JPanel pnlJatek;
     private javax.swing.JTextArea txaLeiras;
     private javax.swing.JTextField txfCsereOsszes2;
@@ -349,4 +338,9 @@ public class HaromAjto extends javax.swing.JFrame {
     private javax.swing.JTextField txfNemCsere;
     private javax.swing.JTextField txfNemCsere1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionValueChanged() {
+        update();
+    }
 }

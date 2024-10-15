@@ -12,6 +12,7 @@ import model.GainsToFile;
  */
 public class HaromAjtoKonzol {
     public static void main(String[] args){
+       /*
         byte szam = -0b01000000;
         //szam+=0b0111111;
         System.out.println(szam);
@@ -30,6 +31,7 @@ public class HaromAjtoKonzol {
         GainsToFile.novel((byte)-127, (byte)-127);
         GainsToFile.novel((byte)-2, (byte)-2);
         GainsToFile.novel((byte)-50, (byte)-50);
-        GainsToFile.novel((byte)-2, (byte)-2);
+        GainsToFile.novel((byte)-2, (byte)-2); 
+        */
     }
 }

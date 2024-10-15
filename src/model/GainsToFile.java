@@ -6,6 +6,7 @@ package model;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -44,10 +45,21 @@ public class GainsToFile {
     static {
         filepath = GainsToFile.class.getClassLoader().getResource("output").getPath();
         filename = "gains.txt";
-        boolean both = new File(filepath + "\\" + filename).exists();
-        if(both){ sc = new Scanner(filepath + "\\" + filename); }
-        String[] adatok = both ? "".split(";") : new String[0];
+        File file = new File(filename);
+        boolean both = file.exists();
+        if(both){
+            try {
+                file.createNewFile();
+                sc = new Scanner(file);
+            } catch (IOException ex) {
+                Logger.getLogger(GainsToFile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
+        String ssz=both ? sc.nextLine() : "";
+        String[] adatok = both ? ssz.split(";") : new String[0];
+        System.out.println(both);
         both=adatok.length>=4;
+        System.out.println(ssz);
         kincsadatok = new int[]{
            both ? Integer.parseInt(adatok[0]) : 0,
            both ? Integer.parseInt(adatok[1]) : 0,
@@ -61,28 +73,27 @@ public class GainsToFile {
      * @param csere Ha 0, hamis, ha több, mint 0, igaz.
      * @param kincs Ha 0, hamis, ha több, mint 0, igaz.
      */
-    public static void novel(byte csere, byte kincs){
+    protected static void novel(byte csere, byte kincs){
        // System.out.println("1: " + Integer.toBinaryString(csere) + ";" + Integer.toBinaryString(kincs));
         csere = bitmuvelet(csere);
-        kincs = bitmuvelet(kincs);
        // System.out.println("2: " + Integer.toBinaryString(csere) + ";" + Integer.toBinaryString(kincs));
         kincsadatok[csere * 2]++;
-        kincsadatok[kincs * 2 + 1]++;
+        kincsadatok[csere * 2 + 1]+=bitmuvelet(kincs);
         save();
     }
     
-    private static byte bitmuvelet(byte ertek){
+    public static byte bitmuvelet(byte ertek){
         return (byte)(((ertek * -1)&0b11111111)>>7);
     }
     
-    public static void save(){
+    protected static void save(){
         String inToFile = "";
         for (int i = 0; i < kincsadatok.length; i++) {
             inToFile+=kincsadatok[i]+";";
         }
-        System.out.println(inToFile);
+       // System.out.println(inToFile);
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-              new FileOutputStream(filepath + "\\" + filename), "utf-8"))) {
+              new FileOutputStream(new File(filename)), "utf-8"))) {
             writer.write(inToFile);
             writer.flush();
             writer.close();

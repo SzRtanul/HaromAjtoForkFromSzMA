@@ -62,20 +62,20 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="csereOsszes" min="-2" pref="61" max="-2" attributes="0"/>
-                                      <Component id="nemCsereOsszes" pref="0" max="32767" attributes="0"/>
+                                      <Component id="La_csereOsszes" min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Component id="La_nemCsereOsszes" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txfNemCsere" min="-2" pref="92" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="nemcsereKincs" pref="73" max="32767" attributes="0"/>
+                                          <Component id="La_nemcsereKincs" pref="73" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txfCsereSzoveg1" min="-2" pref="92" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="csereKincs" max="32767" attributes="0"/>
+                                          <Component id="La_csereKincs" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -114,23 +114,23 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txfCsereOsszes2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="csereOsszes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="La_csereOsszes" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txfNemCsere1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nemCsereOsszes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="La_nemCsereOsszes" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txfCsereSzoveg1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="csereKincs" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="La_csereKincs" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txfNemCsere" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nemcsereKincs" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="La_nemcsereKincs" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -207,9 +207,6 @@
             <Property name="text" type="java.lang.String" value="Ebb&#x151;l kincs:"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfNemCsereActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <Properties>
@@ -244,6 +241,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="V&#xe1;laszt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjto1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAjto2">
           <Properties>
@@ -257,11 +257,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="V&#xe1;laszt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjto3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnUjJatek">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xda;j j&#xe1;t&#xe9;k"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUjJatekActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfCsereSzoveg1">
           <Properties>
@@ -271,9 +277,6 @@
             <Property name="text" type="java.lang.String" value="Ebb&#x151;l kincs:"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfCsereSzoveg1ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfNemCsere1">
           <Properties>
@@ -283,53 +286,38 @@
             <Property name="text" type="java.lang.String" value="&#xd6;sszes nem csere:"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfNemCsere1ActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="nemCsereOsszes">
+        <Component class="javax.swing.JTextField" name="La_nemCsereOsszes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sitka Heading" size="14" style="2"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nemCsereOsszesActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="csereOsszes">
+        <Component class="javax.swing.JTextField" name="La_csereOsszes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sitka Heading" size="14" style="2"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="csereOsszesActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="csereKincs">
+        <Component class="javax.swing.JTextField" name="La_csereKincs">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sitka Heading" size="14" style="2"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="csereKincsActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="nemcsereKincs">
+        <Component class="javax.swing.JTextField" name="La_nemcsereKincs">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sitka Heading" size="14" style="2"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nemcsereKincsActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
