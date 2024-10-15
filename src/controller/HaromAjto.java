@@ -5,31 +5,51 @@
 package controller;
 
 import eventinterfaces.EIs;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
 import model.GainsToFile;
 import model.Jatek;
+import swingmodel.Ajto;
 
 /**
  *
  * @author Szabó-MesterAlex(SZF
  */
 public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
-    Jatek jatek;
+    private Jatek jatek;
+    private Ajto[] ajtok;
     /**
      * Creates new form HaromAjto
      */
     public HaromAjto() {
         initComponents();
-        initAll();
+        ajtok = new Ajto[0];
         restart();
+        initAll();
     }
     
-    public void initAll(){
-        update();
+    public final void initAll(){
         Jatek.addEventListener(this);
+        int kezd = 25;
+        int width = PnAjtok.getWidth();
+        int pont = width / jatek.getAjtok();
+        ajtok = new Ajto[jatek.getAjtok()];
+        for (int i = 0; i < jatek.getAjtok(); i++) {
+            ajtok[i] = new Ajto(jatek, (byte)i, (i*pont)+kezd, 1);
+            PnAjtok.add(ajtok[i]);
+        }
+        PnAjtok.repaint();
+        PnAjtok.updateUI();
+        PnAjtok.validate();
+        update();
     }
     
-    public void restart(){
+    public final void restart(){
         jatek = new Jatek();
+        for (Ajto ajto : ajtok) {
+            ajto.setJatek(jatek);
+            ajto.bezar();
+        }
     }
     
     public void update(){
@@ -50,23 +70,18 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
 
         pnlJatek = new javax.swing.JPanel();
         lblCim = new javax.swing.JLabel();
-        lblAjto1 = new javax.swing.JLabel();
-        lblAjto2 = new javax.swing.JLabel();
-        lblAjto3 = new javax.swing.JLabel();
         txfCsereOsszes2 = new javax.swing.JTextField();
         txfNemCsere = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaLeiras = new javax.swing.JTextArea();
-        btnAjto1 = new javax.swing.JButton();
-        btnAjto2 = new javax.swing.JButton();
-        btnAjto3 = new javax.swing.JButton();
-        btnUjJatek = new javax.swing.JButton();
         txfCsereSzoveg1 = new javax.swing.JTextField();
         txfNemCsere1 = new javax.swing.JTextField();
         La_nemCsereOsszes = new javax.swing.JTextField();
         La_csereOsszes = new javax.swing.JTextField();
         La_csereKincs = new javax.swing.JTextField();
         La_nemcsereKincs = new javax.swing.JTextField();
+        PnAjtok = new javax.swing.JPanel();
+        btnUjJatek = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Három ajtós játék");
@@ -77,12 +92,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         lblCim.setText("Három Ajtó");
         lblCim.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         lblCim.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        lblAjto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/faajto.png"))); // NOI18N
-
-        lblAjto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/faajto.png"))); // NOI18N
-
-        lblAjto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/faajto.png"))); // NOI18N
 
         txfCsereOsszes2.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfCsereOsszes2.setText("Összes csere:");
@@ -107,34 +116,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         txaLeiras.setEnabled(false);
         jScrollPane1.setViewportView(txaLeiras);
 
-        btnAjto1.setText("Választ");
-        btnAjto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjto1ActionPerformed(evt);
-            }
-        });
-
-        btnAjto2.setText("Választ");
-        btnAjto2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjto2ActionPerformed(evt);
-            }
-        });
-
-        btnAjto3.setText("Választ");
-        btnAjto3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjto3ActionPerformed(evt);
-            }
-        });
-
-        btnUjJatek.setText("Új játék");
-        btnUjJatek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUjJatekActionPerformed(evt);
-            }
-        });
-
         txfCsereSzoveg1.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfCsereSzoveg1.setText("Ebből kincs:");
         txfCsereSzoveg1.setEnabled(false);
@@ -155,53 +136,54 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         La_nemcsereKincs.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         La_nemcsereKincs.setEnabled(false);
 
+        javax.swing.GroupLayout PnAjtokLayout = new javax.swing.GroupLayout(PnAjtok);
+        PnAjtok.setLayout(PnAjtokLayout);
+        PnAjtokLayout.setHorizontalGroup(
+            PnAjtokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 623, Short.MAX_VALUE)
+        );
+        PnAjtokLayout.setVerticalGroup(
+            PnAjtokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 266, Short.MAX_VALUE)
+        );
+
+        btnUjJatek.setText("Új játék");
+        btnUjJatek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjJatekActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlJatekLayout = new javax.swing.GroupLayout(pnlJatek);
         pnlJatek.setLayout(pnlJatekLayout);
         pnlJatekLayout.setHorizontalGroup(
             pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlJatekLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(pnlJatekLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(lblCim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txfNemCsere1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txfCsereOsszes2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(La_csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(La_nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
                             .addGroup(pnlJatekLayout.createSequentialGroup()
-                                .addComponent(lblCim)
-                                .addGap(46, 46, 46)
-                                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txfNemCsere1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                    .addComponent(txfCsereOsszes2))
+                                .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(La_csereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(La_nemCsereOsszes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(La_nemcsereKincs))
+                            .addGroup(pnlJatekLayout.createSequentialGroup()
+                                .addComponent(txfCsereSzoveg1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlJatekLayout.createSequentialGroup()
-                                        .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
-                                    .addGroup(pnlJatekLayout.createSequentialGroup()
-                                        .addComponent(txfCsereSzoveg1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(La_csereKincs))))))
-                    .addGroup(pnlJatekLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnAjto1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAjto2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAjto3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))
-                    .addGroup(pnlJatekLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblAjto2)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(lblAjto3)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(lblAjto1)
-                        .addGap(15, 15, 15))
-                    .addComponent(btnUjJatek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(La_csereKincs))))
+                    .addComponent(PnAjtok, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUjJatek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlJatekLayout.setVerticalGroup(
@@ -226,21 +208,13 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
                         .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAjto1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAjto3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAjto2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(PnAjtok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAjto1)
-                    .addComponent(btnAjto2)
-                    .addComponent(btnAjto3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUjJatek)
-                .addGap(31, 31, 31))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,14 +223,12 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlJatek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(pnlJatek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlJatek, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlJatek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -266,21 +238,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
     private void btnUjJatekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjJatekActionPerformed
         restart();
     }//GEN-LAST:event_btnUjJatekActionPerformed
-
-    private void btnAjto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto1ActionPerformed
-        jatek.valaszt((byte)0);
-       // update();
-    }//GEN-LAST:event_btnAjto1ActionPerformed
-
-    private void btnAjto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto2ActionPerformed
-        jatek.valaszt((byte)1);
-       // update();
-    }//GEN-LAST:event_btnAjto2ActionPerformed
-
-    private void btnAjto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjto3ActionPerformed
-        jatek.valaszt((byte)2);
-       // update();
-    }//GEN-LAST:event_btnAjto3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,14 +279,9 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
     private javax.swing.JTextField La_csereOsszes;
     private javax.swing.JTextField La_nemCsereOsszes;
     private javax.swing.JTextField La_nemcsereKincs;
-    private javax.swing.JButton btnAjto1;
-    private javax.swing.JButton btnAjto2;
-    private javax.swing.JButton btnAjto3;
+    private javax.swing.JPanel PnAjtok;
     private javax.swing.JButton btnUjJatek;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAjto1;
-    private javax.swing.JLabel lblAjto2;
-    private javax.swing.JLabel lblAjto3;
     private javax.swing.JLabel lblCim;
     private javax.swing.JPanel pnlJatek;
     private javax.swing.JTextArea txaLeiras;
@@ -341,6 +293,18 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
 
     @Override
     public void actionValueChanged() {
+        if(jatek.getFelkinal() != -1) {
+            JOptionPane.showMessageDialog(this, 
+                    "A játékmester felfedett egy ajtót. "
+                + "Kapsz még egy esélyt a döntésre.");
+            ajtok[jatek.getFelkinal()].kinyit(false);
+        }
+        if(jatek.getKincs() != -1){
+            byte kincssz = (byte)(jatek.getKincs());
+            for (int i = 0; i < ajtok.length; i++) {
+                ajtok[i].kinyit(i == kincssz);
+            }
+        }
         update();
     }
 }

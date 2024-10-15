@@ -54,12 +54,9 @@ public class GainsToFile {
             } catch (IOException ex) {
                 Logger.getLogger(GainsToFile.class.getName()).log(Level.SEVERE, null, ex);
             }
-}
-        String ssz=both ? sc.nextLine() : "";
-        String[] adatok = both ? ssz.split(";") : new String[0];
-        System.out.println(both);
+        }
+        String[] adatok = both ? sc.nextLine().split(";") : new String[0];
         both=adatok.length>=4;
-        System.out.println(ssz);
         kincsadatok = new int[]{
            both ? Integer.parseInt(adatok[0]) : 0,
            both ? Integer.parseInt(adatok[1]) : 0,

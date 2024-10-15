@@ -12,4 +12,7 @@ public class EIs {
     public interface JatekItfc{
         public void actionValueChanged();
     }
+    public interface Intro{
+        public void actionVege();
+    }
 }

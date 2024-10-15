@@ -46,9 +46,9 @@ public class Jatek extends GainsToFile{
         boolean both = false;
         byte i;
         for (i = 0; i < ajtok && !both; i++) {
-            both = i!= autohelye && i!= valasztott;
+            both = i != autohelye && i!= valasztott;
         }
-        return i;
+        return (byte)(i-1);
     }
     
     public boolean valaszt(byte melyik){

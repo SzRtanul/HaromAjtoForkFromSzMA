@@ -4,28 +4,67 @@
  */
 package swingmodel;
 
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import model.Jatek;
 
 /**
  *
  * @author Roland
  */
-public class Ajto extends javax.swing.JPanel {
+public final class Ajto extends javax.swing.JPanel {
     private byte szam;
     private Jatek jatek;
     /**
      * Creates new form Ajto
      * @param jatek
      * @param szam
+     * @param x
+     * @param y
      */
-    public Ajto(Jatek jatek, byte szam) {
-        this.jatek = jatek;
+    public Ajto(Jatek jatek, byte szam, int x, int y) {
+        setJatek(jatek);
         this.szam = szam;
         initComponents();
+        setSize(new Dimension(162, 308));
+        setLocation(new Point(x, y));
+        setVisible(true);
     }
     
     public void kinyit(boolean kincs){
-        //setIcon();
+        URL zarva = Ajto.class.getClassLoader().getResource("resources/kecsketrue.jpg");
+        URL nyitva = Ajto.class.getClassLoader().getResource("resources/auto.png");
+        Image resized = getScaledImage(new ImageIcon(kincs ? nyitva : zarva)
+                .getImage(), La_kep.getWidth(), La_kep.getHeight());
+        La_kep.setIcon(new ImageIcon(resized));
+        Bt_valaszt.setEnabled(false);
+    }
+    
+    public void bezar(){
+        URL ajto = Ajto.class.getClassLoader().getResource("resources/faajto.png");
+        Image resized = getScaledImage(new ImageIcon(ajto)
+                .getImage(), La_kep.getWidth(), La_kep.getHeight());
+        La_kep.setIcon(new ImageIcon(resized));
+        Bt_valaszt.setEnabled(true);
+    }
+    
+    public void setJatek(Jatek jatek){
+        this.jatek = jatek;
+    }
+    
+    private Image getScaledImage(Image srcImg, int w, int h){
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+        return resizedImg;
     }
     
     public int getSzam(){
@@ -45,7 +84,7 @@ public class Ajto extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         La_kep = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Bt_valaszt = new javax.swing.JButton();
 
         jLabel2.setBackground(new java.awt.Color(255, 51, 51));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/faajto.png"))); // NOI18N
@@ -77,14 +116,16 @@ public class Ajto extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        La_kep.setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(162, 308));
+        setMinimumSize(new java.awt.Dimension(162, 308));
+
         La_kep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/faajto.png"))); // NOI18N
         La_kep.setOpaque(true);
 
-        jButton1.setText("választ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bt_valaszt.setText("választ");
+        Bt_valaszt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Bt_valasztActionPerformed(evt);
             }
         });
 
@@ -93,34 +134,33 @@ public class Ajto extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(La_kep))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(La_kep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(Bt_valaszt, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(La_kep, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(La_kep)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Bt_valaszt)
+                .addGap(3, 3, 3))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Bt_valasztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_valasztActionPerformed
         jatek.valaszt(szam);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Bt_valasztActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bt_valaszt;
     private javax.swing.JLabel La_kep;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
