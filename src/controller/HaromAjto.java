@@ -5,6 +5,7 @@
 package controller;
 
 import eventinterfaces.EIs;
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import model.GainsToFile;
 import model.Jatek;
@@ -22,6 +23,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
      */
     public HaromAjto() {
         initComponents();
+        La_szoveg.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         GainsToFile.setFilename("gains.txt");
         ajtok = new Ajto[0];
         doRestart();
@@ -72,8 +74,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         lblCim = new javax.swing.JLabel();
         txfCsereOsszes2 = new javax.swing.JTextField();
         txfNemCsere = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaLeiras = new javax.swing.JTextArea();
         txfCsereSzoveg1 = new javax.swing.JTextField();
         txfNemCsere1 = new javax.swing.JTextField();
         La_nemCsereOsszes = new javax.swing.JTextField();
@@ -82,6 +82,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         La_nemcsereKincs = new javax.swing.JTextField();
         PnAjtok = new javax.swing.JPanel();
         btnUjJatek = new javax.swing.JButton();
+        La_szoveg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Három ajtós játék");
@@ -100,21 +101,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         txfNemCsere.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfNemCsere.setText("Ebből kincs:");
         txfNemCsere.setEnabled(false);
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setEnabled(false);
-
-        txaLeiras.setEditable(false);
-        txaLeiras.setColumns(20);
-        txaLeiras.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
-        txaLeiras.setLineWrap(true);
-        txaLeiras.setRows(4);
-        txaLeiras.setText("A játék lényege, hogy itt 3 ajtót látsz. Az egyik ajtó egy autót rejt, a másik kettőben pedig egy kecske. Dönts arról, hogy a három ajtó közül, melyik rejtheti a kincset. Miután megjelölted, a gép javasol egy ajtót, amibe a kincs van, vagy sem. Döntsd el azt, hogy elfogadod a cserét, vagy hagyatkozol az eredeti elképzeléseden.");
-        txaLeiras.setWrapStyleWord(true);
-        txaLeiras.setEnabled(false);
-        jScrollPane1.setViewportView(txaLeiras);
 
         txfCsereSzoveg1.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         txfCsereSzoveg1.setText("Ebből kincs:");
@@ -154,6 +140,9 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
             }
         });
 
+        La_szoveg.setText("<html> <head> <style> body{ color: gray; } </style> </head> <body> A játék lényege, hogy itt 3 ajtót látsz. Az egyik ajtó egy autót rejt, a másik kettő mögött egy-egy kecske van.  Dönts arról, hogy a három ajtó közül, melyik rejtheti az autót! Miután megjelölted, a gép felfed egy másik ajtót, ami mögött biztosan nem az autó van,  ezután kapsz egy esélyt a döntésed megváltoztatására. Döntsd el, hogy elfogadod-e a cserét, vagy hagyatkozol az eredeti elképzelésedre.  <br><a href='https://www.youtube.com/watch?v=8rk98fNaBQQ'>https://www.youtube.com/watch?v=8rk98fNaBQQ</a> </body> </html>");
+        La_szoveg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout pnlJatekLayout = new javax.swing.GroupLayout(pnlJatek);
         pnlJatek.setLayout(pnlJatekLayout);
         pnlJatekLayout.setHorizontalGroup(
@@ -161,7 +150,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
             .addGroup(pnlJatekLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlJatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(La_szoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnlJatekLayout.createSequentialGroup()
                         .addComponent(lblCim)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -209,8 +198,8 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
                             .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(La_szoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
                 .addComponent(PnAjtok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUjJatek)
@@ -279,12 +268,11 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
     private javax.swing.JTextField La_csereOsszes;
     private javax.swing.JTextField La_nemCsereOsszes;
     private javax.swing.JTextField La_nemcsereKincs;
+    private javax.swing.JLabel La_szoveg;
     private javax.swing.JPanel PnAjtok;
     private javax.swing.JButton btnUjJatek;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCim;
     private javax.swing.JPanel pnlJatek;
-    private javax.swing.JTextArea txaLeiras;
     private javax.swing.JTextField txfCsereOsszes2;
     private javax.swing.JTextField txfCsereSzoveg1;
     private javax.swing.JTextField txfNemCsere;

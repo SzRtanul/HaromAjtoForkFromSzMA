@@ -44,10 +44,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="La_szoveg" pref="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblCim" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -111,8 +111,8 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="86" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="La_szoveg" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="PnAjtok" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnUjJatek" min="-2" max="-2" attributes="0"/>
@@ -153,35 +153,6 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <Properties>
-            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="verticalScrollBarPolicy" type="int" value="21"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTextArea" name="txaLeiras">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Sitka Heading" size="14" style="0"/>
-                </Property>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="A j&#xe1;t&#xe9;k l&#xe9;nyege, hogy itt 3 ajt&#xf3;t l&#xe1;tsz. Az egyik ajt&#xf3; egy aut&#xf3;t rejt, a m&#xe1;sik kett&#x151;ben pedig egy kecske. D&#xf6;nts arr&#xf3;l, hogy a h&#xe1;rom ajt&#xf3; k&#xf6;z&#xfc;l, melyik rejtheti a kincset. Miut&#xe1;n megjel&#xf6;lted, a g&#xe9;p javasol egy ajt&#xf3;t, amibe a kincs van, vagy sem. D&#xf6;ntsd el azt, hogy elfogadod a cser&#xe9;t, vagy hagyatkozol az eredeti elk&#xe9;pzel&#xe9;seden."/>
-                <Property name="wrapStyleWord" type="boolean" value="true"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="javax.swing.JTextField" name="txfCsereSzoveg1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -254,6 +225,12 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUjJatekActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="La_szoveg">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;head&gt; &lt;style&gt; body{ color: gray; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; A j&#xe1;t&#xe9;k l&#xe9;nyege, hogy itt 3 ajt&#xf3;t l&#xe1;tsz. Az egyik ajt&#xf3; egy aut&#xf3;t rejt, a m&#xe1;sik kett&#x151; m&#xf6;g&#xf6;tt egy-egy kecske van.  D&#xf6;nts arr&#xf3;l, hogy a h&#xe1;rom ajt&#xf3; k&#xf6;z&#xfc;l, melyik rejtheti az aut&#xf3;t! Miut&#xe1;n megjel&#xf6;lted, a g&#xe9;p felfed egy m&#xe1;sik ajt&#xf3;t, ami m&#xf6;g&#xf6;tt biztosan nem az aut&#xf3; van,  ezut&#xe1;n kapsz egy es&#xe9;lyt a d&#xf6;nt&#xe9;sed megv&#xe1;ltoztat&#xe1;s&#xe1;ra. D&#xf6;ntsd el, hogy elfogadod-e a cser&#xe9;t, vagy hagyatkozol az eredeti elk&#xe9;pzel&#xe9;sedre.  &lt;br&gt;&lt;a href=&apos;https://www.youtube.com/watch?v=8rk98fNaBQQ&apos;&gt;https://www.youtube.com/watch?v=8rk98fNaBQQ&lt;/a&gt; &lt;/body&gt; &lt;/html&gt;"/>
+            <Property name="verticalAlignment" type="int" value="1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
