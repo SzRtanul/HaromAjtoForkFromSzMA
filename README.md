@@ -5,4 +5,4 @@ Ha választott a személy, hogy cserél vagy sem, fedje fel hogy elvitte a kincs
 
 Emellett statisztikát is kell csinálni arról, hogy a cserés és a NEM cserés játékok közül, hányszor vitte el a kincset (NE FELEJTSE EL A PROGRAM, HOGY MI TÖRTÉNT AZ ELŐZŐ JÁTÉKOKBAN). Pl. 5 cserés játékból 2-szer vitte el a kincset és 3 NEM cserés játékból 1-szer vitte el a kincset.
 
-![haromAjtoUj](https://github.com/user-attachments/assets/fb14b4b9-35aa-40a4-88d1-878facf6e36e)
+![haromAjtoUj](https://github.com/user-attachments/assets/33232a09-9fcd-41db-aafe-217477df4a6e)
