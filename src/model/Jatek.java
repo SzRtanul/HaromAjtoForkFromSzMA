@@ -51,9 +51,9 @@ public class Jatek extends GainsToFile{
         return (byte)(i-1);
     }
     
-    public boolean valaszt(byte melyik){
+    public boolean doValaszt(byte melyik){
         muveletsorrend++;
-        if(muveletsorrend == 2) GainsToFile.novel(
+        if(muveletsorrend == 2) GainsToFile.doNovel(
                 this.valasztott == melyik ? (byte)1 : (byte)0,
                 melyik == this.autohelye ? (byte)1 : (byte)0);
         this.valasztott = melyik;

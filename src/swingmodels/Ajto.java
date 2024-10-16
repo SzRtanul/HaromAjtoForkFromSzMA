@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package swingmodel;
+package swingmodels;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -154,7 +154,7 @@ public final class Ajto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Bt_valasztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_valasztActionPerformed
-        jatek.valaszt(szam);
+        jatek.doValaszt(szam);
     }//GEN-LAST:event_Bt_valasztActionPerformed
 
 

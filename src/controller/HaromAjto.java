@@ -5,11 +5,10 @@
 package controller;
 
 import eventinterfaces.EIs;
-import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import model.GainsToFile;
 import model.Jatek;
-import swingmodel.Ajto;
+import swingmodels.Ajto;
 
 /**
  *
@@ -23,12 +22,21 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
      */
     public HaromAjto() {
         initComponents();
+        GainsToFile.setFilename("gains.txt");
         ajtok = new Ajto[0];
-        restart();
-        initAll();
+        doRestart();
+        setInitAll();
     }
     
-    public final void initAll(){
+    public final void doRestart(){
+        jatek = new Jatek();
+        for (Ajto ajto : ajtok) {
+            ajto.setJatek(jatek);
+            ajto.bezar();
+        }
+    }
+    
+    public final void setInitAll(){
         Jatek.addEventListener(this);
         int kezd = 25;
         int width = PnAjtok.getWidth();
@@ -41,18 +49,10 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         PnAjtok.repaint();
         PnAjtok.updateUI();
         PnAjtok.validate();
-        update();
+        doUpdate();
     }
     
-    public final void restart(){
-        jatek = new Jatek();
-        for (Ajto ajto : ajtok) {
-            ajto.setJatek(jatek);
-            ajto.bezar();
-        }
-    }
-    
-    public void update(){
+    public void doUpdate(){
         La_csereOsszes.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszescsere)+"");
         La_csereKincs.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszescserekincs)+"");
         La_nemCsereOsszes.setText(GainsToFile.getValue(GainsToFile.kincsAdatok.osszesnemcsere)+"");
@@ -236,7 +236,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUjJatekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjJatekActionPerformed
-        restart();
+        doRestart();
     }//GEN-LAST:event_btnUjJatekActionPerformed
 
     /**
@@ -305,6 +305,6 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
                 ajtok[i].kinyit(i == kincssz);
             }
         }
-        update();
+        doUpdate();
     }
 }
