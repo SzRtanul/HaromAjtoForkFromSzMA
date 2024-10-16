@@ -34,7 +34,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnlJatek" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="pnlJatek" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -111,12 +114,12 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="La_szoveg" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="PnAjtok" max="32767" attributes="0"/>
+                  <Component id="La_szoveg" min="-2" pref="99" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PnAjtok" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnUjJatek" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -213,7 +216,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="266" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -228,6 +231,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="La_szoveg">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sitka Heading" size="14" style="2"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;head&gt; &lt;style&gt; body{ color: gray; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; A j&#xe1;t&#xe9;k l&#xe9;nyege, hogy itt 3 ajt&#xf3;t l&#xe1;tsz. Az egyik ajt&#xf3; egy aut&#xf3;t rejt, a m&#xe1;sik kett&#x151; m&#xf6;g&#xf6;tt egy-egy kecske van.  D&#xf6;nts arr&#xf3;l, hogy a h&#xe1;rom ajt&#xf3; k&#xf6;z&#xfc;l, melyik rejtheti az aut&#xf3;t! Miut&#xe1;n megjel&#xf6;lted, a g&#xe9;p felfed egy m&#xe1;sik ajt&#xf3;t, ami m&#xf6;g&#xf6;tt biztosan nem az aut&#xf3; van,  ezut&#xe1;n kapsz egy es&#xe9;lyt a d&#xf6;nt&#xe9;sed megv&#xe1;ltoztat&#xe1;s&#xe1;ra. D&#xf6;ntsd el, hogy elfogadod-e a cser&#xe9;t, vagy hagyatkozol az eredeti elk&#xe9;pzel&#xe9;sedre.  &lt;br&gt;&lt;a href=&apos;https://www.youtube.com/watch?v=8rk98fNaBQQ&apos;&gt;https://www.youtube.com/watch?v=8rk98fNaBQQ&lt;/a&gt; &lt;/body&gt; &lt;/html&gt;"/>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>

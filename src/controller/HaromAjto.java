@@ -130,7 +130,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         );
         PnAjtokLayout.setVerticalGroup(
             PnAjtokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 267, Short.MAX_VALUE)
         );
 
         btnUjJatek.setText("Új játék");
@@ -140,6 +140,7 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
             }
         });
 
+        La_szoveg.setFont(new java.awt.Font("Sitka Heading", 2, 14)); // NOI18N
         La_szoveg.setText("<html> <head> <style> body{ color: gray; } </style> </head> <body> A játék lényege, hogy itt 3 ajtót látsz. Az egyik ajtó egy autót rejt, a másik kettő mögött egy-egy kecske van.  Dönts arról, hogy a három ajtó közül, melyik rejtheti az autót! Miután megjelölted, a gép felfed egy másik ajtót, ami mögött biztosan nem az autó van,  ezután kapsz egy esélyt a döntésed megváltoztatására. Döntsd el, hogy elfogadod-e a cserét, vagy hagyatkozol az eredeti elképzelésedre.  <br><a href='https://www.youtube.com/watch?v=8rk98fNaBQQ'>https://www.youtube.com/watch?v=8rk98fNaBQQ</a> </body> </html>");
         La_szoveg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -198,12 +199,12 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
                             .addComponent(txfNemCsere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(La_nemcsereKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(La_szoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(PnAjtok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(La_szoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PnAjtok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUjJatek)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,7 +218,9 @@ public class HaromAjto extends javax.swing.JFrame implements EIs.JatekItfc{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlJatek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlJatek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
